@@ -33,5 +33,7 @@
         text-align: center;
         padding: 0.5rem;
         background-color: var(--highlight);
+        color: var(--text);
+        font-size: xx-large;
     }
 </style>

@@ -14,22 +14,24 @@
 </script>
 
 <div>
-    <iframe
-        src={url}
-        height="600"
-        width="1000"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-    ></iframe>
+    <iframe title="Explanation video" src={url} class="responsive-iframe"></iframe>
 </div>
 
 <style>
     div {
         background-color: var(--background);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%;
+    }
+    .responsive-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
     }
 </style>
