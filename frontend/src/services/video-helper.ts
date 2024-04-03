@@ -19,6 +19,7 @@ async function askOpenAI(question: string, systemPrompt?: string) {
         model: "gpt-3.5-turbo",
         messages,
     });
+    console.log("Response from OpenAI:", completion);
     let answerChoice = completion.choices[0];
     if (answerChoice.finish_reason != "stop") {
         console.error("OpenAI did not finish successful generating an answer.");
