@@ -1,9 +1,11 @@
 <script>
+    import AiAnswers from "../AiAnswers.svelte"
+    import  chart  from '../assets/studentchart.png';
 </script>
 
 
 <div class="student-view">
-    StudentView
+    <img class="chart" src={chart}>
 </div>
 
 <style>
@@ -15,5 +17,9 @@
         width: 100%;
 
         border-radius: 0.4rem;
+    }
+
+    .chart{
+        width: 100%;
     }
 </style>

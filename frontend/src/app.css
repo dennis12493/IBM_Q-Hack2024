@@ -1,10 +1,10 @@
 :root {
-  --background: rgb(24, 24, 24);
+  --background: rgb(32, 32, 32);
   --highlight: rgb(48, 48, 48);
   --text: rgb(255, 255, 255);
   --accent: rgb(144, 209, 255);
-  --contrast: rgb(255, 133, 129);
-  --panel: rgb(48, 48, 48);
+  --contrast: rgb(244, 157, 103);
+  --panel: #454545;
   --border: rgba(255, 255, 255, 0.426);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
