@@ -1,37 +1,61 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { IconSend2, IconUser } from '@tabler/icons-svelte';
+    import { onMount } from "svelte";
+    import { IconSend2, IconUser } from "@tabler/icons-svelte";
+    // import '../services/video-chat';
 
     type Message = {
-        sender: string;
+        sender: "me" | "other";
         message: string;
     };
 
-    let messages: string[] = [];
+    let messages: Message[] = [];
 
     onMount(() => {
-        messages = ['Do you have some questions about the video?'];
+        messages = [
+            {
+                sender: "other",
+                message: "Do you have some questions about the video?",
+            },
+        ];
     });
 
     function sendMessage() {
-        const input = document.getElementById('message-input') as HTMLInputElement;
-        const message = input.value.trim();
+        const input = document.getElementById("message-input") as HTMLInputElement;
+        const message: Message = {
+            sender: "me",
+            message: input.value.trim(),
+        };
 
         if (message) {
             messages = [...messages, message];
-            input.value = '';
+            input.value = "";
         }
     }
 </script>
 
 <div class="chat-container">
     {#each messages as message}
-        <div class="message"><IconUser/> {message}</div>
+        <div class="card">
+            <div class="card-body">
+                {#if message.sender == "me"}
+                    <IconUser />
+                {/if}
+                {message.message}
+                {#if message.sender == "other"}
+                    <IconUser />
+                {/if}
+            </div>
+        </div>
     {/each}
 
     <div class="input-container">
-        <input id="message-input" type="text" placeholder="Type your message..." />
-        <button on:click={sendMessage}><IconSend2/></button>
+        <textarea
+            class="form-control"
+            id="message-input"
+            data-bs-toggle="autosize"
+            placeholder="Type something…"
+        ></textarea>
+        <button on:click={sendMessage} class="btn btn-primary d-flex"><IconSend2 /></button>
     </div>
 </div>
 
@@ -44,31 +68,8 @@
         border-radius: 4px;
     }
 
-    .message {
-        margin: 5px;
-        border: 1px;
-        border-radius: 6px;
-    }
-
     .input-container {
         display: flex;
         margin-top: 10px;
-    }
-
-    .input-container input {
-        flex: 1;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    .input-container button {
-        margin-left: 10px;
-        padding: 8px 12px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
     }
 </style>
