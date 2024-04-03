@@ -83,7 +83,6 @@
         width: 100%;
         justify-content: center;
         align-items: center;
-        word-break: break-all;
     }
 
     .chat-container {
