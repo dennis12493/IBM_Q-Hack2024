@@ -18,4 +18,4 @@ def video_to_wav(video_file):
         raise SystemError("Video file does not exist")
 
 # Example usage
-transcribe_video("test-video.mp4")
+transcribe_video("test_data_ibm.mp4")
