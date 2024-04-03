@@ -1,5 +1,4 @@
 <script>
-    import AiAnswers from "../AiAnswers.svelte"
     import  chart  from '../assets/studentchart.png';
     import Curriculum from "./Curriculum.svelte";
     import VerticalBarChart from './VerticalBarChart.svelte';
