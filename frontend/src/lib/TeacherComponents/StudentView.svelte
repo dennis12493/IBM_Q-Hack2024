@@ -1,11 +1,17 @@
 <script>
     import AiAnswers from "../AiAnswers.svelte"
     import  chart  from '../assets/studentchart.png';
+    import Curriculum from "./Curriculum.svelte";
+    import VerticalBarChart from './VerticalBarChart.svelte';
 </script>
 
 
 <div class="student-view">
-    <img class="chart" src={chart}>
+    <img class="chart" src={chart} alt="">
+    <div class="horizontal-wrapper">
+        <Curriculum></Curriculum>
+        <VerticalBarChart></VerticalBarChart>
+    </div>
 </div>
 
 <style>
@@ -21,5 +27,13 @@
 
     .chart{
         width: 100%;
+        user-select: none;
+    }
+
+    .horizontal-wrapper{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0rem 1rem;
     }
 </style>

@@ -49,12 +49,6 @@
         width: 100%;
     }
 
-    .bar-chart{
-        height: 60%;
-        width: calc(100% - 5rem );
-        background-color: rgb(68, 35, 35);
-    }
-
     .pie-chart-wrapper{
         display: flex;
         flex-direction: column;
@@ -68,7 +62,7 @@
         border-radius: 100%;
         width: 15rem;
         height: 15rem;
-        background-color: rgb(26, 76, 92);
+        background-color: var(--accent);
     }
 
     h1{
