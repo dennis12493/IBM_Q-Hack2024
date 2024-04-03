@@ -2,4 +2,6 @@
 
 </script>
 
-<p>Here is the teacher</p>
+<div>
+    <p>Here is the teacher</p>
+</div>
