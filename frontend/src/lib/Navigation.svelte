@@ -31,7 +31,9 @@
     }
     h1 {
         text-align: center;
-        padding: 0.5rem;
+        padding: 1rem;
         background-color: var(--highlight);
+        color: var(--text);
+        font-size: xx-large;
     }
 </style>
