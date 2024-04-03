@@ -3,6 +3,7 @@
 </script>
 
 <div>
+    <h1>Lectures</h1>
     <button on:click={e => {selectedVideo.set(0)}}>All About Bees</button>
     <button on:click={e => {selectedVideo.set(1)}}>Trees for kids</button>
     <button on:click={e => {selectedVideo.set(2)}}>Stanford EE364A Convex Optimization</button>
