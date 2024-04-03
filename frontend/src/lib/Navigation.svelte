@@ -3,9 +3,9 @@
 </script>
 
 <div>
-    <button on:click={e => {selectedVideo.set(0)}}>Die Biene</button>
-    <button on:click={e => {selectedVideo.set(1)}}>Der Baum</button>
-    <button on:click={e => {selectedVideo.set(2)}}>Die Tanne</button>
+    <button on:click={e => {selectedVideo.set(0)}}>All About Bees</button>
+    <button on:click={e => {selectedVideo.set(1)}}>Trees for kids</button>
+    <button on:click={e => {selectedVideo.set(2)}}>Stanford EE364A Convex Optimization</button>
 </div>
 
 <style>
