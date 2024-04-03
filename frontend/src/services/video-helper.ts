@@ -27,7 +27,7 @@ async function askOpenAI(question: string, systemPrompt?: string) {
 }
 
 function getVideoSystemPromt(videoId: string) {
-    let transcript = transcripts[videoId];
+    let transcript = JSON.stringify(transcripts[videoId]);
     let systemPrompt =
         transcript +
         "\n" +
