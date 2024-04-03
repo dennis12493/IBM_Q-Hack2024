@@ -1,8 +1,16 @@
 <script lang="ts">
+    import {selectedVideo, urls} from "../general/stores";
     import { onMount } from "svelte";
     import { askAboutVideo } from '../services/video-helper';
     import IconUser from "./assets/User.svg";
     import IconSend from "./assets/Send.svg";
+
+    let url: string = "";
+    $: $selectedVideo, handleVideoChange();
+
+    function handleVideoChange() {
+        url = urls[$selectedVideo];
+    }
 
     type Message = {
         sender: "me" | "other";
@@ -27,7 +35,7 @@
             message: input.value.trim(),
         };
 
-        if (message) {
+        if (message && message.message !== "") {
             messages = [...messages, message];
             input.value = "";
             askAboutVideo("v6tUWk7vC6g", message.message).then((answer ) => { //TODO: get VideoId
@@ -44,15 +52,15 @@
 <div class="chat-container">
     {#each messages as message}
         <div class="card">
+            {#if message.sender == "me"}
+                <img src={IconUser} alt=""/>
+            {/if}
             <div class="card-body">
-                {#if message.sender == "me"}
-                    <img src={IconUser} alt=""/>
-                {/if}
                 {message.message}
-                {#if message.sender == "other"}
-                    <img src={IconUser} alt=""/>
-                {/if}
             </div>
+            {#if message.sender == "other"}
+                <img src={IconUser} alt=""/>
+            {/if}
         </div>
     {/each}
 
@@ -63,11 +71,20 @@
             data-bs-toggle="autosize"
             placeholder="Type something…"
         ></textarea>
-        <button on:click={sendMessage} class="btn btn-primary d-flex"><img src={IconSend} alt=""/></button>
+        <button on:click={sendMessage}><img src={IconSend} alt=""/></button>
     </div>
 </div>
 
 <style>
+    .card {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        word-break: break-all;
+    }
+
     .chat-container {
         margin: 0;
         padding: 20px;
@@ -77,7 +94,7 @@
         height: calc(100% - 20px - 5rem);
     }
 
-    .card {
+    .card-body {
         margin: 10px;
         padding: 10px;
         border-radius: 10px;

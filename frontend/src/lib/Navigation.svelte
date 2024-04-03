@@ -1,12 +1,12 @@
 <script lang="ts">
-    import selectedVideo from "../general/stores";
+    import {selectedVideo} from "../general/stores";
 </script>
 
 <div>
     <h1>Lectures</h1>
     <button on:click={e => {selectedVideo.set(0)}}>All About Bees</button>
     <button on:click={e => {selectedVideo.set(1)}}>Trees for kids</button>
-    <button on:click={e => {selectedVideo.set(2)}}>Stanford EE364A Convex Optimization</button>
+    <button on:click={e => {selectedVideo.set(2)}}>The danger of silence</button>
 </div>
 
 <style>
