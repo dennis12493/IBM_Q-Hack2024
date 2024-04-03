@@ -19,11 +19,14 @@
         display: flex;
         flex-direction: column;
         background-color: var(--background);
+        height: 100%;
+        width: 100%;
     }
 
     div {
         background-color: var(--background);
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
     }
 </style>

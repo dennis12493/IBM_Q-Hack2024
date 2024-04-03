@@ -17,7 +17,7 @@
         justify-content: center;
     }
     button {
-        background-color: var(--background);
+        background-color: var(--highlight);
         color: var(--text);
         padding: 1rem;
         text-align: center;
@@ -28,6 +28,11 @@
         cursor: pointer;
         /* border: */
         border-radius: 1rem;
-        border: 1px solid black;
+        border: var(--highlight);
+    }
+    h1 {
+        text-align: center;
+        padding: 0.5rem;
+        background-color: var(--highlight);
     }
 </style>
