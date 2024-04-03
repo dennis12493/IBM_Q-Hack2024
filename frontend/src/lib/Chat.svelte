@@ -10,6 +10,7 @@
 
     function handleVideoChange() {
         url = urls[$selectedVideo];
+        onMount();
     }
 
     type Message = {

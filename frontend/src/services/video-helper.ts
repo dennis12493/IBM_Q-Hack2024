@@ -27,18 +27,18 @@ async function askOpenAI(question: string, systemPrompt?: string) {
     return answerChoice.message.content ?? "Sorry, currently I can't help you.";
 }
 
-function getVideoSystemPromt(videoId: string) {
+function getVideoSystemPrompt(videoId: string) {
     let transcript = JSON.stringify(transcripts[videoId]);
     let systemPrompt =
         transcript +
         "\n" +
         "You are a helpful assistant, which answers the question with information from the upper " +
-        'transcript.The Answer is in the format "BEGINNING_TIMESTAMP:ANSWER_TEXT".';
+        'transcript. You provide an explanation to the question and also an beginning timestamp, where the explanation can be found in the video of the transcript. The answer is in the format "TIMESTAMP:EXPLANATION".';
     return systemPrompt;
 }
 
 export async function askAboutVideo(videoId: string, question: string) {
-    let systemPrompt = getVideoSystemPromt(videoId);
+    let systemPrompt = getVideoSystemPrompt(videoId);
     let answer = await askOpenAI(question, systemPrompt);
     let message = answer.split(":");
     return { timestamp: parseInt(message[0]), answer: message[1] };

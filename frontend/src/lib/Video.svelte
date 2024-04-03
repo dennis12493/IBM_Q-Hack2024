@@ -8,14 +8,16 @@
     }
 
     $: $timestamp, handleTimestampChange();
-
+    let videoUrl: string = "";
     function handleTimestampChange() {
-        url = url + "?t=" + $timestamp;
+        if($timestamp !== undefined && $timestamp !== null && $timestamp !== 0){
+            videoUrl = url + "?start=" + $timestamp;
+        }
     }
 </script>
 
 <div>
-    <iframe title="Explanation video" src={url} class="responsive-iframe"></iframe>
+    <iframe title="Explanation video" src={videoUrl} class="responsive-iframe"></iframe>
 </div>
 
 <style>
