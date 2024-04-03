@@ -14,5 +14,7 @@
     main {
         display: flex;
         flex-direction: row;
+        height: 100vh;
+        background-color: var(--background);
     }
 </style>
