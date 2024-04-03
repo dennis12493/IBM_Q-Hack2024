@@ -7,10 +7,16 @@
 
 <main>
     <Header />
-    <div>
-        <Navigation />
-        <Video />
-        <Chat />
+    <div class="top-level">
+        <div class="nav">
+            <Navigation />
+        </div>
+        <div class="video">
+            <Video />
+        </div>
+        <div class="chat">
+            <Chat />
+        </div>
     </div>
 </main>
 
@@ -23,10 +29,22 @@
         width: 100%;
     }
 
-    div {
+    .top-level {
         background-color: var(--background);
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        gap: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .nav {
+        width: 20%;
+    }
+    .video {
+        width: 60%;
+    }
+    .chat {
+        width: 20%;
     }
 </style>

@@ -14,7 +14,6 @@
         background-color: var(--background);
         display: flex;
         flex-direction: column;
-        justify-content: center;
     }
     button {
         background-color: var(--highlight);
