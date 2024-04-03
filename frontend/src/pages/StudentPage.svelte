@@ -40,9 +40,9 @@
         width: 20%;
     }
     .video {
-        width: 60%;
+        width: 40%;
     }
     .chat {
-        width: 20%;
+        width: 40%;
     }
 </style>

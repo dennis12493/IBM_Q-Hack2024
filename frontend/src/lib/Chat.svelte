@@ -51,20 +51,21 @@
 </script>
 
 <div class="chat-container">
-    {#each messages as message}
+    <div class="messages">
+        {#each messages as message}
         <div class="card">
             {#if message.sender == "me"}
-                <img src={IconUser} alt=""/>
+            <img src={IconUser} alt=""/>
             {/if}
             <div class="card-body">
                 {message.message}
             </div>
             {#if message.sender == "other"}
-                <img src={IconUser} alt=""/>
+            <img src={IconUser} alt=""/>
             {/if}
         </div>
-    {/each}
-
+        {/each}
+    </div>
     <div class="input-container">
         <textarea
             class="form-control"
@@ -85,13 +86,18 @@
         align-items: center;
     }
 
+    .messages{
+        padding-top: 2rem;
+        height: calc(100% - 8rem);
+        max-height: calc(100% - 12rem);
+        overflow-y: scroll;
+    }
+
     .chat-container {
         margin: 0;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        overflow-y: scroll;
-        height: calc(100% - 20px - 5rem);
+        border-radius: 5px;
+        height: calc(100%);
+        background-color: var(--panel);
     }
 
     .card-body {
@@ -104,14 +110,18 @@
     }
 
     .input-container {
+        position: absolute;
+        bottom: 0;
         display: flex;
-        margin: 10px;
-        padding: 10px;
+        align-items: center;
+        justify-content: center;
+
+        width: 38%;
+        margin-bottom: 2rem;
     }
 
     textarea {
-        margin: 10px;
-        padding: 10px;
+        width: 80%;
         border-radius: 10px;
         background-color: --var(--highlight);
         border: 2px solid #ccc;
