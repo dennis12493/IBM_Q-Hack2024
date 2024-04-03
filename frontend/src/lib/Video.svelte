@@ -17,7 +17,7 @@
 </script>
 
 <div>
-    <iframe title="Explanation video" src={videoUrl} class="responsive-iframe"></iframe>
+    <iframe title="Explanation video" src={videoUrl == "" ? url: videoUrl} class="responsive-iframe"></iframe>
 </div>
 
 <style>
