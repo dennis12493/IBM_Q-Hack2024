@@ -11,40 +11,41 @@
             <option value="1"><h1>History class 4a</h1></option>
         </select>
     </div>
-    <p class="name">A.B</p>
+    <div class="name">
+        <p>LR</p>
+    </div>
 </div>
 
 <style>
     .top-level {
-        background-color: var(--background);
+        background-color: var(--panel);
         display: flex;
         justify-content: space-between;
-        border-bottom: 3px solid black;
-        margin: 1rem;
+        align-items: center;
+        height: 4rem;
     }
 
     select {
-        background-color: var(--background);
         color: var(--text);
-        padding: 1rem;
+        padding: 0.2rem 1rem;
         text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 2rem;
+        font-size: 1.7rem;
         margin: 0.5rem;
         border: none;
+        background-color: transparent;
     }
 
     .name {
         background-color: var(--background);
         color: var(--text);
-        padding: 1rem;
+        height: 3rem;
+        width: 3rem;
         text-align: center;
-        text-decoration: none;
-        display: inline-block;
         font-size: 1.5rem;
-        margin: 0.5rem;
-        border: 4px solid black;
-        border-radius: 100rem;
+        border-radius: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

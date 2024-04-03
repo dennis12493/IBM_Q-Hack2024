@@ -1,39 +1,47 @@
 <script lang="ts">
-    import {selectedVideo} from "../general/stores";
+    import VideoButton from "./VideoButton.svelte";
+
 </script>
 
-<div>
+<div class="wrapper">
     <h1>Lectures</h1>
-    <button on:click={e => {selectedVideo.set(0)}}>All About Bees</button>
-    <button on:click={e => {selectedVideo.set(1)}}>Trees for kids</button>
-    <button on:click={e => {selectedVideo.set(2)}}>The danger of silence</button>
+    <div class="lectures">
+        <VideoButton value={0} title={'Bees'}></VideoButton>
+        <VideoButton value={1} title={'Trees'}></VideoButton>
+        <VideoButton value={2} title={'the danger of Silence'}></VideoButton>
+    </div>
 </div>
 
 <style>
-    div {
-        background-color: var(--background);
+    .wrapper {
+        background-color: var(--panel);
+        width: 100%;
+        height: 100%;
+
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
-    button {
-        background-color: var(--highlight);
-        color: var(--text);
-        padding: 1rem;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 1rem;
-        margin: 0.5rem;
-        cursor: pointer;
-        /* border: */
-        border-radius: 1rem;
-        border: var(--highlight);
+
+    .lectures{
+        padding-top: 1rem;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
     }
     h1 {
+        margin: 0rem 1rem;
+        width: calc(100% - 2rem);
         text-align: center;
-        padding: 1rem;
-        background-color: var(--highlight);
+        background-color: var(--background);
         color: var(--text);
-        font-size: xx-large;
+        font-size: 1.7rem;
+        padding: 0.5rem 0;
+        margin: 0;
+
+        border-radius: 5px;
     }
 </style>

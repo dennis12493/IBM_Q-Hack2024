@@ -5,7 +5,7 @@
     import Chat from '../lib/Chat.svelte';
 </script>
 
-<main>
+<div class="main">
     <Header />
     <div class="top-level">
         <div class="nav">
@@ -18,13 +18,12 @@
             <Chat />
         </div>
     </div>
-</main>
+</div>
 
 <style>
-    main {
+    .main {
         display: flex;
         flex-direction: column;
-        background-color: var(--background);
         height: 100%;
         width: 100%;
     }
@@ -34,8 +33,6 @@
         display: flex;
         flex-direction: row;
         gap: 1rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
         height: 100%;
     }
 
