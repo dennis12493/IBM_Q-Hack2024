@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
 
 // Create and export the store
-const studentInput = writable<string>('');
-export default studentInput;
+const selectedVideo = writable<number>(0);
+export default selectedVideo;
