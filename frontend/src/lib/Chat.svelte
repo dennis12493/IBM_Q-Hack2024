@@ -10,7 +10,7 @@
 
     function handleVideoChange() {
         url = urls[$selectedVideo];
-        onMount();
+        resetMessages();
     }
 
     type Message = {
@@ -20,14 +20,16 @@
 
     let messages: Message[] = [];
 
-    onMount(() => {
+    onMount(() => resetMessages);
+
+    function resetMessages() {
         messages = [
             {
                 sender: "other",
                 message: "Do you have some questions about the video?",
             },
         ];
-    });
+    }
 
     function sendMessage() {
         const input = document.getElementById("message-input") as HTMLInputElement;
