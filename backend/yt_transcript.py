@@ -1,14 +1,13 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 import re
-import os
+# import os
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-import os
-import json
+import openai
 
-nltk.download('punkt')
-nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('stopwords')
 
 # Sample yt video
 videoId="NiKtZgImdlY"
@@ -26,9 +25,31 @@ for item in data:
     filtered_tokens = [word for word in tokens if word not in stop_words]
     coherent_text = ' '.join(filtered_tokens)
     item['text'] = coherent_text
+# Set your OpenAI API key
+openai.api_key = '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'
 
-output_file_path = "transcript-" + videoId + ".json"
+# Extract text and timestamps from data
+openai_input = [{'text': item['text'], 'start': item['start']} for item in data]
+
+# Define your prompt
+prompt = "Please take a look at the following data:"
+
+# Call the OpenAI API with the structured data
+response = openai.Completion.create(
+    engine="davinci-002",
+    prompt=prompt,
+    examples_context=openai_input,
+    max_tokens=100
+)
+
+# Retrieve and print the response
+for choice in response.choices:
+    print(choice.text.strip())
+"""
+# Define the file path
+output_file_path = "transcript-" + videoId + ".json"  # You can change the file name and extension as needed
 
 with open(output_file_path, 'w') as file:
     json.dump(data, file, indent=4)
 print("Transcript saved to \"" + output_file_path + "\".")
+"""
