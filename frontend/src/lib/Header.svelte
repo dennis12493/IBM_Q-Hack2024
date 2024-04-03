@@ -11,7 +11,7 @@
             <option value="1"><h1>History class 4a</h1></option>
         </select>
     </div>
-    <p>A.B</p>
+    <p class="name">A.B</p>
 </div>
 
 <style>
@@ -35,7 +35,7 @@
         border: none;
     }
 
-    p {
+    .name {
         background-color: var(--background);
         color: var(--text);
         padding: 1rem;

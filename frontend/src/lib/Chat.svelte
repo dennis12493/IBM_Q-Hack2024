@@ -61,14 +61,12 @@
 
 <style>
     .chat-container {
-        max-width: 500px;
-        margin: 0 auto;
+        margin: 0;
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 4px;
         overflow-y: scroll;
-        height: 100%;
-        max-height: 100%;
+        height: calc(100% - 20px - 5rem);
     }
 
     .card {
