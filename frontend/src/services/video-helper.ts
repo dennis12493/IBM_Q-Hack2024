@@ -23,7 +23,7 @@ async function askOpenAI(question: string, systemPrompt?: string) {
     if (answerChoice.finish_reason != "stop") {
         console.error("OpenAI did not finish successful generating an answer.");
     }
-    return answerChoice.message.content;
+    return answerChoice.message.content ?? "Sorry, currently I can't help you.";
 }
 
 function getVideoSystemPromt(videoId: string) {
@@ -38,5 +38,7 @@ function getVideoSystemPromt(videoId: string) {
 
 export async function askAboutVideo(videoId: string, question: string) {
     let systemPrompt = getVideoSystemPromt(videoId);
-    return await askOpenAI(question, systemPrompt);
+    let answer = await askOpenAI(question, systemPrompt);
+    let message = answer.split(":");
+    return { timestamp: parseInt(message[0]), answer: message[1] };
 }
