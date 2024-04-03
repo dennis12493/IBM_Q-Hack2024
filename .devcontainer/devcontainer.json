@@ -1,0 +1,6 @@
+{
+	"name": "DevelopmentContainer",
+	"image": "madebytimo/development",
+	"remoteUser": "user",
+    "privileged": false
+}
