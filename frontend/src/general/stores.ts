@@ -8,3 +8,5 @@ export const urls: string[] = [
     "uipjCTg_PqQ",
     "NiKtZgImdlY",
 ];
+
+export const timestamp = writable<number>(0);

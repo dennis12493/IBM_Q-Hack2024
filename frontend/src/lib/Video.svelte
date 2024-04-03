@@ -1,10 +1,16 @@
 <script lang="ts">
-    import {selectedVideo, urls} from "../general/stores";
+    import {selectedVideo, urls, timestamp} from "../general/stores";
     let url: string = "";
     $: $selectedVideo, handleVideoChange();
 
     function handleVideoChange() {
         url = "https://www.youtube.com/embed/" + urls[$selectedVideo];
+    }
+
+    $: $timestamp, handleTimestampChange();
+
+    function handleTimestampChange() {
+        url = url + "?t=" + $timestamp;
     }
 </script>
 

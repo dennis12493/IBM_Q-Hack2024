@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {selectedVideo, urls} from "../general/stores";
+    import {selectedVideo, urls, timestamp} from "../general/stores";
     import { onMount } from "svelte";
     import { askAboutVideo } from '../services/video-helper';
     import IconUser from "./assets/User.svg";
@@ -38,7 +38,8 @@
         if (message && message.message !== "") {
             messages = [...messages, message];
             input.value = "";
-            askAboutVideo("v6tUWk7vC6g", message.message).then((answer ) => { //TODO: get VideoId
+            askAboutVideo(url, message.message).then((answer ) => {
+                timestamp.set(123);
                 let answerMessage: Message =  {
                     sender: "other",
                     message: answer ? answer : "Sorry, currently I can't help you."
