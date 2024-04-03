@@ -1,7 +1,11 @@
 :root {
-  --background: rgb(69, 69, 69);
+  --background: rgb(24, 24, 24);
   --highlight: rgb(48, 48, 48);
   --text: rgb(255, 255, 255);
+  --accent: rgb(144, 209, 255);
+  --contrast: rgb(255, 133, 129);
+  --panel: rgb(48, 48, 48);
+  --border: rgba(255, 255, 255, 0.426);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
