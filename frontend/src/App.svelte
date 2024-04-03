@@ -36,7 +36,6 @@
         gap: 1rem;
         padding-left: 1rem;
         padding-right: 1rem;
-        height: 100%;
     }
 
     .nav {

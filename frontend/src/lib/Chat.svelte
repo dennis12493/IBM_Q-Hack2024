@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { IconSend2, IconUser } from "@tabler/icons-svelte";
-    // import '../services/video-chat';
+    import IconUser from "./assets/User.svg";
+    import IconSend from "./assets/Send.svg";
 
     type Message = {
         sender: "me" | "other";
@@ -38,11 +38,11 @@
         <div class="card">
             <div class="card-body">
                 {#if message.sender == "me"}
-                    <IconUser />
+                    <img src={IconUser} alt=""/>
                 {/if}
                 {message.message}
                 {#if message.sender == "other"}
-                    <IconUser />
+                    <img src={IconUser} alt=""/>
                 {/if}
             </div>
         </div>
@@ -55,7 +55,7 @@
             data-bs-toggle="autosize"
             placeholder="Type something…"
         ></textarea>
-        <button on:click={sendMessage} class="btn btn-primary d-flex"><IconSend2 /></button>
+        <button on:click={sendMessage} class="btn btn-primary d-flex"><img src={IconSend} alt=""/></button>
     </div>
 </div>
 
@@ -66,10 +66,37 @@
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 4px;
+        overflow-y: scroll;
+        height: 100%;
+        max-height: 100%;
+    }
+
+    .card {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: --var(--highlight);
+        border: 2px solid #ccc;
+        color: --var(--text);
     }
 
     .input-container {
         display: flex;
-        margin-top: 10px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    textarea {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: --var(--highlight);
+        border: 2px solid #ccc;
+        color: --var(--text);
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
     }
 </style>
