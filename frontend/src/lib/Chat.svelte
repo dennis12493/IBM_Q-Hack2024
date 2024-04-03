@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { askAboutVideo } from '../services/video-helper';
     import IconUser from "./assets/User.svg";
     import IconSend from "./assets/Send.svg";
 
@@ -29,6 +30,13 @@
         if (message) {
             messages = [...messages, message];
             input.value = "";
+            askAboutVideo("v6tUWk7vC6g", message.message).then((answer ) => { //TODO: get VideoId
+                let answerMessage: Message =  {
+                    sender: "other",
+                    message: answer ? answer : "Sorry, currently I can't help you."
+                }
+                messages = [ ...messages, answerMessage ]
+            })
         }
     }
 </script>
