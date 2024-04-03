@@ -19,11 +19,12 @@ async function askOpenAI(question: string, systemPrompt?: string) {
         model: "gpt-3.5-turbo",
         messages,
     });
+    console.log("Response from OpenAI:", completion);
     let answerChoice = completion.choices[0];
     if (answerChoice.finish_reason != "stop") {
         console.error("OpenAI did not finish successful generating an answer.");
     }
-    return answerChoice.message.content;
+    return answerChoice.message.content ?? "Sorry, currently I can't help you.";
 }
 
 function getVideoSystemPromt(videoId: string) {
@@ -38,5 +39,7 @@ function getVideoSystemPromt(videoId: string) {
 
 export async function askAboutVideo(videoId: string, question: string) {
     let systemPrompt = getVideoSystemPromt(videoId);
-    return await askOpenAI(question, systemPrompt);
+    let answer = await askOpenAI(question, systemPrompt);
+    let message = answer.split(":");
+    return { timestamp: parseInt(message[0]), answer: message[1] };
 }

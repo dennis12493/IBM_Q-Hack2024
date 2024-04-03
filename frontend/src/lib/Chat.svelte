@@ -38,11 +38,11 @@
         if (message && message.message !== "") {
             messages = [...messages, message];
             input.value = "";
-            askAboutVideo(url, message.message).then((answer ) => {
-                timestamp.set(123);
+            askAboutVideo(url, message.message).then((value ) => {
+                timestamp.set(value.timestamp);
                 let answerMessage: Message =  {
                     sender: "other",
-                    message: answer ? answer : "Sorry, currently I can't help you."
+                    message: value.answer
                 }
                 messages = [ ...messages, answerMessage ]
             })
