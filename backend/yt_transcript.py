@@ -2,9 +2,11 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import re
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+import os
+import json
 
 # Sample yt video
-data = YouTubeTranscriptApi.get_transcript("kV1ru-Inzl4")
+data = YouTubeTranscriptApi.get_transcript("NiKtZgImdlY")
 
 # Remove punctuation and convert to lowercase for each 'text' key
 for item in data:
@@ -17,3 +19,11 @@ for item in data:
     filtered_tokens = [word for word in tokens if word not in stop_words]
     coherent_text = ' '.join(filtered_tokens)
     item['text'] = coherent_text
+
+# Define the file path
+output_file_path = "data_qhack.json"  # You can change the file name and extension as needed
+
+# Write data to the file
+with open(output_file_path, 'w') as file:
+    json.dump(data, file, indent=4)
+print(data)
