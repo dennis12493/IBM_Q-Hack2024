@@ -1,5 +1,6 @@
 <script>
     import BarChart from "./BarChart.svelte";
+    import Suggestion from "./Suggestion.svelte";
 
 </script>
 
@@ -17,7 +18,11 @@
     <div class="suggestions-wrapper">
         <h2>Suggestions for Improvement</h2>
         <div class="suggestions">
-            Text
+            <Suggestion text={"You could incorporate more experiments or group projects to deepen students' understanding of biological concepts while fostering collaboration in the next lesson."}></Suggestion>
+            <Suggestion text={"Consider devoting a segment to exploring different ecosystems and the creatures that inhabit them to captivate students' interest and make learning more memorable next time."}></Suggestion>
+            <Suggestion text={"Next lesson, try breaking down challenging topics into bite-sized, digestible pieces. Using visual aids or analogies might help students grasp these concepts more easily."}></Suggestion>
+            <Suggestion text={"Integrate examples from everyday life or nature documentaries in the next lesson to make abstract concepts more relatable and enhance comprehension."}></Suggestion>
+            <Suggestion text={"During the next lesson, consider providing additional one-on-one support or personalized explanations to john for topics they find challenging. This individual attention can help them feel more confident and engaged in the lesson material."}></Suggestion>
         </div>
     </div>
 </div>
@@ -78,6 +83,7 @@
     }
 
     .suggestions {
+        overflow-y: scroll;
         background-color: var(--background);
         border-radius: 5px;
         height: 100%;

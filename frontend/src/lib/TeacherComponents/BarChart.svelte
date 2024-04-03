@@ -29,7 +29,7 @@
     .bar {
         width: 0%;
         height: 2rem;
-        background-color: var(--contrast);
+        background-color: var(--accent);
         color: var(--background);
         display: flex;
         align-items: center;
@@ -40,14 +40,18 @@
     }
 
     .bar:nth-child(2) {
+        background-color: color-mix(in srgb, var(--accent) 80%,var(--contrast));
         animation: growBar2 0.7s 0.1s ease-in forwards;
     }
 
     .bar:nth-child(3) {
+        background-color: color-mix(in srgb, var(--accent) 80%,var(--contrast));
+        background-color: color-mix(in srgb, var(--accent) 66%,var(--contrast));
         animation: growBar3 0.7s 0.2s ease-in forwards;
     }
 
     .bar:nth-child(4) {
+        background-color: color-mix(in srgb, var(--accent) 20%,var(--contrast));
         animation: growBar4 0.7s 0.3s ease-in forwards;
     }
 
