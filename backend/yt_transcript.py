@@ -1,10 +1,19 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 import re
+import os
+import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+import os
+import json
+
+nltk.download('punkt')
+nltk.download('stopwords')
 
 # Sample yt video
-data = YouTubeTranscriptApi.get_transcript("kV1ru-Inzl4")
+videoId="NiKtZgImdlY"
+
+data = YouTubeTranscriptApi.get_transcript(videoId)
 
 # Remove punctuation and convert to lowercase for each 'text' key
 for item in data:
@@ -17,3 +26,9 @@ for item in data:
     filtered_tokens = [word for word in tokens if word not in stop_words]
     coherent_text = ' '.join(filtered_tokens)
     item['text'] = coherent_text
+
+output_file_path = "transcript-" + videoId + ".json"
+
+with open(output_file_path, 'w') as file:
+    json.dump(data, file, indent=4)
+print("Transcript saved to \"" + output_file_path + "\".")
