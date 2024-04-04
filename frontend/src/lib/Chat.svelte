@@ -1,9 +1,9 @@
 <script lang="ts">
     import { selectedVideo, urls, timestamp } from "../general/stores";
-    import { onMount } from "svelte";
+    import type { UserMessage } from "../services/video-helper";
     import { askAboutVideo } from "../services/video-helper";
     import Message from "./Message.svelte";
-    import type { UserMessage } from "../services/video-helper";
+    import { onMount } from "svelte";
 
     let url: string = "";
     let userInput: string = "";
