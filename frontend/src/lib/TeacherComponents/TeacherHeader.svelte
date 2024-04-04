@@ -1,5 +1,5 @@
 <script lang="ts">
-
+    import { Link } from "svelte-routing";
 </script>
 
 <div class="teacher-header">
@@ -12,7 +12,7 @@
     </select>
 
     <div class="role-wrapper">
-        <p class="role">Teacher</p>
+        <Link to="/">Teacher</Link>
         <div class="profile">
             <p>JT</p>
         </div>
@@ -43,10 +43,12 @@
     }
 
     select {
-        outline: none;
+        color: var(--text);
+        padding: 0.2rem 1rem;
+        text-align: center;
+        font-size: 1.7rem;
         border: none;
-        padding: 0.4rem 2rem;
-        border-radius: 5px;
+        background-color: transparent;
     }
 
     .profile {

@@ -56,7 +56,7 @@
         height: 1.7rem;
 
         background-color: var(--border);
-        filter: invert(0.96);
+        filter: invert(0.9);
         padding: 0.6rem;
         border-radius: 100%;
     }

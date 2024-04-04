@@ -1,10 +1,10 @@
 <script></script>
 
 <div class="bar-chart">
-    <p>Relative Performance</p>
+    <p>Relative Understanding</p>
     <div class="chart-wrapper">
-        <div class="bar"></div>
-        <div class="bar"></div>
+        <div class="bar">John</div>
+        <div class="bar">Class</div>
     </div>
 </div>
 
@@ -27,6 +27,8 @@
 
     .bar{
         width: 5rem;
+        text-align: center;
+        color: var(--background);
     }
 
     .chart-wrapper{
@@ -40,13 +42,13 @@
 
     .bar:nth-child(1){
         height: 0%;
-        background-color: var(--contrast);
-        animation: growBar 0.75s ease-in forwards;
+        animation: growBar 0.75s 0.2s ease-in forwards;
+        background-color: var(--accent);
     }
     .bar:nth-child(2){
+        background-color: var(--contrast);
         height: 0%;
-        background-color: var(--accent);
-        animation: growBar1 0.75s 0.2s ease-in forwards;
+        animation: growBar1 0.75s ease-in forwards;
     }
 
         @keyframes growBar {
@@ -54,7 +56,7 @@
             height: 0%;
         }
         to {
-            height: 60%;
+            height: 95%;
         }
     }
 
@@ -63,7 +65,7 @@
             height: 0%;
         }
         to {
-            height: 95%;
+            height: 60%;
         }
     }
 </style>

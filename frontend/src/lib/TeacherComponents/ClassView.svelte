@@ -72,10 +72,14 @@
 
     h1{
         color: var(--accent);
+        margin: 0;
+        margin-bottom: 1rem;
     }
 
     h2 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+        margin: 0;
+        margin-bottom: 1rem;
     }
 
     .suggestions-wrapper{

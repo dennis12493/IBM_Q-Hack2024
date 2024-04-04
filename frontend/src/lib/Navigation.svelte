@@ -6,9 +6,9 @@
 <div class="wrapper">
     <h1>Lectures</h1>
     <div class="lectures">
-        <VideoButton value={0} title={'Bees'}></VideoButton>
-        <VideoButton value={1} title={'Trees'}></VideoButton>
-        <VideoButton value={2} title={'the danger of Silence'}></VideoButton>
+        <VideoButton date="21.03.2024" value={0} title={'Bees'}></VideoButton>
+        <VideoButton date="24.03.2024" value={1} title={'Trees'}></VideoButton>
+        <VideoButton date="01.04.2024" value={2} title={'Wölfe'}></VideoButton>
     </div>
 </div>
 
@@ -34,14 +34,12 @@
     }
     h1 {
         margin: 0rem 1rem;
-        width: calc(100% - 2rem);
+        width: 100%;
         text-align: center;
         background-color: var(--background);
         color: var(--text);
         font-size: 1.7rem;
-        padding: 0.5rem 0;
-        margin: 0;
-
-        border-radius: 5px;
+        padding: 1.5rem 0;
+        color: var(--accent);
     }
 </style>

@@ -11,10 +11,22 @@
     .message{
         border-bottom: 2px solid var(--border);
         padding: 0.3rem 1rem;
+        animation: fade 0.7s ease-in;
+
     }
 
-    P{
+    p{
+        color: var(--text);
+        font-size: 1.2rem;
+    }
 
+    @keyframes fade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 
 </style>

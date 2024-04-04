@@ -82,23 +82,14 @@
         max-height: 100%;
         overflow-y: scroll;
         background-color: var(--panel);
+
+        border-radius: 5px 5px 0 0;
     }
 
     .chat-container {
         margin: 1rem 0.5rem;
         border-radius: 5px;
         height: 85%;
-
-        background-color: red;
-    }
-
-    .card-body {
-        margin: 10px;
-        padding: 10px;
-        border-radius: 10px;
-        background-color: --var(--highlight);
-        border: 2px solid #ccc;
-        color: --var(--text);
     }
 
     .input-container {
@@ -123,6 +114,7 @@
 
         outline: none;
         border: none;
+        border-radius: 0 0 5px 5px;
     }
 
     img {

@@ -1,10 +1,11 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import {selectedVideo, urls, timestamp} from "../general/stores";
     let url: string = "";
     $: $selectedVideo, handleVideoChange();
 
     function handleVideoChange() {
-        url = "https://www.youtube.com/embed/" + urls[$selectedVideo];
+        url = "https://www.youtube.com/embed/" + urls[$selectedVideo] + "?autoplay=1&rel=0&modestbranding=1&color=white";
     }
 
     $: $timestamp, handleTimestampChange();
@@ -14,27 +15,39 @@
             videoUrl = url + "?start=" + $timestamp;
         }
     }
+
+    const setVideoSize = () => {
+        const videoFrame = document.getElementById('video-frame');
+        const videoContainer = document.getElementById('video-container');
+        const aspectRatio = 16 / 9; // Adjust this according to your video's aspect ratio
+        const containerWidth = videoContainer? videoContainer.offsetWidth : 0;
+        const newHeight = containerWidth ? containerWidth / aspectRatio: 0;
+        videoFrame ? videoFrame.style.height = newHeight + 'px' : '';
+    }
+
+    onMount(() => {
+        setVideoSize();
+        window.addEventListener('resize', setVideoSize);
+    })
 </script>
 
-<div>
-    <iframe title="Explanation video" src={videoUrl == "" ? url: videoUrl} class="responsive-iframe"></iframe>
+<div id="video-container">
+    <iframe id="video-frame" title="Explanation video" src={videoUrl == "" ? url: videoUrl} class="responsive-iframe" allowfullscreen frameborder="0"></iframe>
 </div>
 
 <style>
     div {
-        background-color: var(--background);
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        padding-top: 56.25%;
+        display: flex;
+        align-items: start;
+        padding-top: 1rem;
+        height: calc(100% - 5rem);
     }
     .responsive-iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
         width: 100%;
         height: 100%;
+
+        outline: none;
+        border: none;
+        border-radius: 5px;
     }
 </style>

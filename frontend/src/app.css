@@ -1,7 +1,7 @@
 :root {
   --background: rgb(32, 32, 32);
   --highlight: rgb(48, 48, 48);
-  --text: rgb(255, 255, 255);
+  --text: rgba(255, 255, 255, 0.848);
   --accent: rgb(144, 209, 255);
   --contrast: rgb(244, 103, 124);
   --panel: #454545;
@@ -37,4 +37,9 @@ body {
 p{
     margin: 0;
     padding: 0;
+}
+
+a{
+    color: var(--border);
+    text-decoration: none;
 }
