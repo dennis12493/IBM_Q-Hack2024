@@ -2,14 +2,17 @@
     import { onMount } from "svelte";
     import {selectedVideo, urls, timestamp} from "../general/stores";
     let url: string = "";
+    let videoUrl: string = "";
+
     $: $selectedVideo, handleVideoChange();
 
     function handleVideoChange() {
         url = "https://www.youtube.com/embed/" + urls[$selectedVideo] + "?autoplay=1&rel=0&modestbranding=1&color=white";
+        videoUrl = "";
     }
 
     $: $timestamp, handleTimestampChange();
-    let videoUrl: string = "";
+
     function handleTimestampChange() {
         if($timestamp !== undefined && $timestamp !== null && $timestamp !== 0){
             videoUrl = url + "?start=" + $timestamp;

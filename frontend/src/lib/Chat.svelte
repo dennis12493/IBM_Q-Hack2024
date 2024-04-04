@@ -11,6 +11,8 @@
 
     function handleVideoChange() {
         url = urls[$selectedVideo];
+        timestamp.set(0);
+
         resetMessages();
     }
 
@@ -44,7 +46,6 @@
             messages = [...messages, message];
             console.log(message.message);
             userInput = "";
-            console.log(message.message);
             askAboutVideo(url, message.message).then((value ) => {
                 timestamp.set(value.timestamp);
                 let answerMessage: Message =  {
