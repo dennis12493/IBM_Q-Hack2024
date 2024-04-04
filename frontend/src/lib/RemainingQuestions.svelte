@@ -1,16 +1,31 @@
-<script>
+<script lang="ts">
+    import { writable } from "svelte/store";
 
+    const messages = writable<string[]>(['Can we please talk a bit more about the wildlife in America? I think it is quite confusing.']);
+
+    let userInput: string = '';
+
+    const handleInputSubmit = (event: Event) => {
+        event.preventDefault();
+        messages.set([...$messages, userInput]);
+        userInput = "";
+    }
 </script>
 
 <div>
     <h1>Questions for next Class</h1>
     <div class="messages">
-        <p>
-            Can we please talk a bit more about the wildlife in America? I think it is quite confusing.
-        <p>
-        <div class="line"></div>
+
+        {#each $messages as message}
+            <p>
+                {message}
+            <p>
+            <div class="line"></div>
+        {/each}
     </div>
-    <input placeholder="Remaining questions for the teacher..."/>
+    <form on:submit={handleInputSubmit}>
+        <input bind:value={userInput} placeholder="Remaining questions for the teacher..."/>
+    </form>
 </div>
 
 <style>
@@ -18,6 +33,10 @@
         margin: 0;
         font-size: 1.4rem;
         color: var(--accent);
+    }
+
+    form{
+        width: 100%;
     }
 
     input {
