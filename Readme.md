@@ -9,6 +9,8 @@ Replace `###OPENAI_API_KEY###` with your API key.
 echo "VITE_OPENAI_API_KEY=###OPENAI_API_KEY###" > frontend/.env
 ```
 
+Don't forget to ```npm i```
+
 ## Backend transcript
 
 ```bash

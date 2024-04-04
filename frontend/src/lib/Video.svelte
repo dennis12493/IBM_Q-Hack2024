@@ -15,7 +15,7 @@
 
     function handleTimestampChange() {
         if($timestamp !== undefined && $timestamp !== null && $timestamp !== 0){
-            videoUrl = url + "?start=" + $timestamp;
+            videoUrl = url + "?start=" + $timestamp + "&autoplay=1";
             console.log(videoUrl);
         }
     }
