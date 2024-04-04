@@ -9,14 +9,17 @@ Replace `###OPENAI_API_KEY###` with your API key.
 echo "VITE_OPENAI_API_KEY=###OPENAI_API_KEY###" > frontend/.env
 ```
 
-Don't forget to ```npm i```
-
-## Backend transcript
-
+Start the frontend development server with the following command:
 ```bash
-mkdir --parents backend-transcript/resources/deepspeach
-curl --location https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.pbmm \
-    > backend-transcript/resources/deepspeach/models.pbmm
-curl --location https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.scorer \
-    > backend-transcript/resources/deepspeach/models.scorer
+cd frontend
+npm install
+npm run dev
+```
+
+## Backend
+
+Start the backend development server with the following command:
+```bash
+pip3 install fastapi nltk uvicorn youtube_transcript_api
+uvicorn backend:app --reload --port 8080
 ```
