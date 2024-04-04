@@ -24,6 +24,7 @@ async function askOpenAI(question: string, systemPrompt: string,  oldUserMessage
         { role: "system", content: systemPrompt},
         { role: "user", content: question },
     ];
+    messages = oldMessages.concat(messages);
     console.log("Asking OpenAI with following messages:", messages);
     let completion = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
