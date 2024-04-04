@@ -36,10 +36,12 @@
         margin: 0rem 1rem;
         width: 100%;
         text-align: center;
-        background-color: var(--background);
+        background-color: var(--panel);
         color: var(--text);
         font-size: 1.7rem;
         padding: 1.5rem 0;
         color: var(--accent);
+        border-bottom: 3px solid var(--background);
+        border-top: 10px solid var(--background);
     }
 </style>
