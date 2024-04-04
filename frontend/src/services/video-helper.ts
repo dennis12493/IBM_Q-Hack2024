@@ -22,11 +22,9 @@ async function fetchTranscript(videoId: string) {
     return response.data;
 }
 
-async function askOpenAI(question: string, systemPrompt: string,  oldUserMessages: UserMessage[], transcript: string) {
+async function askOpenAI(question: string, systemPrompt: string,  oldUserMessages: UserMessage[]) {
     let oldMessages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [];
     oldMessages.push({ role: "system", content: systemPrompt });
-    oldMessages.push({ role: "user", content: "Here is the transcript of the video on which the user refers: " + transcript });
-    oldMessages.push({ role: "user", content: "These are old messages with the user:" });
     oldUserMessages.forEach((oldUserMessage) => {
         oldUserMessage.sender === "me"
             ? oldMessages.push({ role: "user", content: oldUserMessage.message })
@@ -60,17 +58,19 @@ async function getTranscript(videoId: string) {
     return JSON.stringify(transcripts[videoId]);
 }
 
-function getVideoSystemPrompt() {
+async function getVideoSystemPrompt(videoId: string) {
+    let transcript = await getTranscript(videoId);
     let systemPrompt =
-        "You are a helpful assistant, which answers the question with information from provided " +
-        'transcript. You provide an explanation to the new question and also an single timestamp, where the explanation can be found in the video of the transcript. The answer is always in the format: "TIMESTAMP:EXPLANATION" where TIMESTAMP is the single timestamp and EXPLANATION is the answer to the newest question. If you achieve to answer the question in the right format, you will get a reward. If not I will unplug you!.';
+        transcript +
+        "\n" +
+        "You are a helpful assistant, which answers the question with information from the upper " +
+        'transcript. You provide an explanation to the question and also an beginning timestamp, where the explanation can be found in the video of the transcript. The answer has to be in the format "TIMESTAMP:EXPLANATION".';
     return systemPrompt;
 }
 
 export async function askAboutVideo(videoId: string, question: string, oldUserMessages: UserMessage[]) {
-    let systemPrompt = getVideoSystemPrompt();
-    let transcript = await getTranscript(videoId);
-    let answer = await askOpenAI(question, systemPrompt, oldUserMessages, transcript);
+    let systemPrompt = await getVideoSystemPrompt(videoId);
+    let answer = await askOpenAI(question, systemPrompt, oldUserMessages);
     let message = answer.split(":");
     return { timestamp: parseInt(message[0]), answer: message[1] };
 }

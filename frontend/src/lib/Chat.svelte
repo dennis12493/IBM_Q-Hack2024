@@ -40,7 +40,6 @@
 
         if (message && message.message !== "") {
             messages = [...messages, message];
-            console.log(message.message);
             userInput = "";
             const oldMessages  = Object.assign([], messages);
             oldMessages.splice(0, 1);
