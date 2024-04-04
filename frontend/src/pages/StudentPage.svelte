@@ -44,6 +44,9 @@
     }
     .video {
         width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
     .chat {
         width: 40%;
