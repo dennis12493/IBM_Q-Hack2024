@@ -9,7 +9,7 @@ import json
 nltk.download('punkt')
 nltk.download('stopwords')
 
-video_ids=["NiKtZgImdlY", "v6tUWk7vC6g", "uipjCTg_PqQ"]
+video_ids=["v6tUWk7vC6g", "uipjCTg_PqQ", "J3euEMWC8tg"]
 output_file_path = "../frontend/src/lib/assets/transcripts.json"
 
 def get_sanized_transscript(video_id):
