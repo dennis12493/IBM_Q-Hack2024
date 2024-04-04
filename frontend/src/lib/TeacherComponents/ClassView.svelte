@@ -70,12 +70,6 @@
         width: 100%;
     }
 
-    .pie-chart{
-        border-radius: 100%;
-        width: 15rem;
-        height: 15rem;
-        background-color: var(--accent);
-    }
 
     h1{
         color: var(--accent);

@@ -44,7 +44,7 @@
         position: relative;
         color: var(--background);
         bottom: 12rem;
-        left: 6.7rem;
+        left: 6.3rem;
         width: 2rem;
     }
 </style>
