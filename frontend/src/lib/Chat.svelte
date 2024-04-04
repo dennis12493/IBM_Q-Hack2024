@@ -26,7 +26,7 @@
         messages = [
             {
                 sender: "other",
-                message: "I'm happy to assist you. Feel free to ask any Question you want!",
+                message: "Hello! How can I help you today?",
             },
         ];
     }
@@ -89,7 +89,7 @@
     .chat-container {
         margin: 1rem 0.5rem;
         border-radius: 5px;
-        height: 85%;
+        height: 87%;
     }
 
     .input-container {
@@ -100,7 +100,7 @@
         justify-content: center;
 
         width: 38%;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
     }
 
     form{

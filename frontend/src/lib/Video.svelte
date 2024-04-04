@@ -50,4 +50,8 @@
         border: none;
         border-radius: 5px;
     }
+
+    #video-container{
+        height: 45%;
+    }
 </style>
