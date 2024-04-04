@@ -1,8 +1,9 @@
 <script lang="ts">
-    import {selectedVideo, urls, timestamp} from "../general/stores";
+    import { selectedVideo, urls, timestamp } from "../general/stores";
     import { onMount } from "svelte";
-    import { askAboutVideo } from '../services/video-helper';
+    import { askAboutVideo } from "../services/video-helper";
     import Message from "./Message.svelte";
+    import type { UserMessage } from "../services/video-helper";
 
     let url: string = "";
     let userInput: string = "";
@@ -16,12 +17,7 @@
         resetMessages();
     }
 
-    type Message = {
-        sender: "me" | "other";
-        message: string;
-    };
-
-    let messages: Message[] = [];
+    let messages: UserMessage[] = [];
 
     onMount(() => resetMessages);
 
@@ -34,10 +30,10 @@
         ];
     }
 
-    function sendMessage(event: Event){
+    function sendMessage(event: Event) {
         event.preventDefault();
         isInputDisabled = true;
-        const message: Message = {
+        const message: UserMessage = {
             sender: "me",
             message: userInput.trim(),
         };
@@ -46,17 +42,21 @@
             messages = [...messages, message];
             console.log(message.message);
             userInput = "";
-            askAboutVideo(url, message.message).then((value ) => {
-                timestamp.set(value.timestamp);
-                let answerMessage: Message =  {
-                    sender: "other",
-                    message: value.answer
-                }
-                messages = [ ...messages, answerMessage ]
-                isInputDisabled = false;
-            }).catch(() => {
-                isInputDisabled = false;
-            })
+            const oldMessages  = Object.assign([], messages);
+            oldMessages.splice(0, 1);
+            askAboutVideo(url, message.message, oldMessages)
+                .then((value) => {
+                    timestamp.set(value.timestamp);
+                    let answerMessage: UserMessage = {
+                        sender: "other",
+                        message: value.answer,
+                    };
+                    messages = [...messages, answerMessage];
+                    isInputDisabled = false;
+                })
+                .catch(() => {
+                    isInputDisabled = false;
+                });
         }
     }
 </script>
@@ -76,14 +76,15 @@
                 id="message-input"
                 placeholder="Ask me anything..."
                 type="text"
-            >
+            />
         </form>
     </div>
 </div>
+
 <!-- <button on:click={sendMessage}><img src={IconSend} alt=""/></button> -->
 
 <style>
-    .messages{
+    .messages {
         padding-top: 2rem;
         height: 100%;
         max-height: 100%;
@@ -110,7 +111,7 @@
         margin-bottom: 2rem;
     }
 
-    form{
+    form {
         width: 100%;
     }
 
