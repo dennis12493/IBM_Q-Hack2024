@@ -7,7 +7,7 @@
     $: $selectedVideo, handleVideoChange();
 
     function handleVideoChange() {
-        url = "https://www.youtube.com/embed/" + urls[$selectedVideo] + "?rel=0&modestbranding=1&color=white";
+        url = "https://www.youtube.com/embed/" + urls[$selectedVideo] ;
         videoUrl = "";
     }
 
@@ -16,6 +16,7 @@
     function handleTimestampChange() {
         if($timestamp !== undefined && $timestamp !== null && $timestamp !== 0){
             videoUrl = url + "?start=" + $timestamp;
+            console.log(videoUrl);
         }
     }
 
@@ -43,6 +44,7 @@
         display: flex;
         align-items: start;
         padding-top: 1rem;
+        margin-bottom: 2rem;
         height: calc(100% - 5rem);
     }
     .responsive-iframe {

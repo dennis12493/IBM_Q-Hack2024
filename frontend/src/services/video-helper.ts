@@ -63,7 +63,7 @@ async function getTranscript(videoId: string) {
 function getVideoSystemPrompt() {
     let systemPrompt =
         "You are a helpful assistant, which answers the question with information from provided " +
-        'transcript. You provide an explanation to the new question and also an single integer timestamp, where the explanation can be found in the video of the transcript. The answer is always in the format "TIMESTAMP:EXPLANATION".';
+        'transcript. You provide an explanation to the new question and also an single timestamp, where the explanation can be found in the video of the transcript. The answer is always in the format: "TIMESTAMP:EXPLANATION" where TIMESTAMP is the single timestamp and EXPLANATION is the answer to the newest question. If you achieve to answer the question in the right format, you will get a reward. If not I will unplug you!.';
     return systemPrompt;
 }
 
