@@ -1,5 +1,6 @@
 <script>
     import BarChart from "./BarChart.svelte";
+    import PieChart from "./PieChart.svelte";
     import Suggestion from "./Suggestion.svelte";
 
 </script>
@@ -12,7 +13,7 @@
         </div>
         <div class="pie-chart-wrapper">
             <p class="margin-top">Questions per Student</p>
-            <div class="pie-chart"></div>
+            <PieChart percent={38}/>
         </div>
     </div>
     <div class="suggestions-wrapper">
@@ -28,6 +29,12 @@
 </div>
 
 <style>
+    p{
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--text);
+    }
+
     .class-view{
         width: 100%;
         background-color: var(--panel);
@@ -74,6 +81,7 @@
         color: var(--accent);
         margin: 0;
         margin-bottom: 1rem;
+        font-weight: 500;
     }
 
     h2 {

@@ -38,6 +38,7 @@
         text-align: center;
         padding: 0;
         margin: 0;
+        color: var(--accent);
     }
 
     .card{

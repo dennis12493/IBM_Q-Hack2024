@@ -25,7 +25,8 @@
         bottom: 2rem;
 
         width: calc(40% - 1rem);
-        padding: 1rem 0;
+        padding: 1rem 0rem;
+        padding-left: 0.3rem;
         outline: none;
         border: none;
         border-radius: 0 0 5px 5px;

@@ -3,7 +3,7 @@
     import Navigation from '../lib/Navigation.svelte';
     import Video from '../lib/Video.svelte';
     import Chat from '../lib/Chat.svelte';
-    import RemainingQuestions from '../lib/TeacherComponents/RemainingQuestions.svelte';
+    import RemainingQuestions from '../lib/RemainingQuestions.svelte';
 </script>
 
 <div class="main">
