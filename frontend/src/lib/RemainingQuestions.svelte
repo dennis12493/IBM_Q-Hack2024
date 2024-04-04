@@ -1,7 +1,7 @@
 <script lang="ts">
     import { writable } from "svelte/store";
 
-    const messages = writable<string[]>(['Can we please talk a bit more about the wildlife in America? I think it is quite confusing.']);
+    const messages = writable<string[]>(['Why exactly do bees make honey?']);
 
     let userInput: string = '';
 

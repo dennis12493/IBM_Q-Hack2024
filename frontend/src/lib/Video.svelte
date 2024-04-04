@@ -7,7 +7,7 @@
     $: $selectedVideo, handleVideoChange();
 
     function handleVideoChange() {
-        url = "https://www.youtube.com/embed/" + urls[$selectedVideo] + "?autoplay=1&rel=0&modestbranding=1&color=white";
+        url = "https://www.youtube.com/embed/" + urls[$selectedVideo] + "?rel=0&modestbranding=1&color=white";
         videoUrl = "";
     }
 
