@@ -40,8 +40,8 @@ p{
     font-family: 'Verdana', sans-serif;
 }
 
-div input select {
-    font-family: 'Verdana', sans-serif;
+div input select p {
+    font-family: 'Verdana', sans-serif !important;
 }
 
 a{
@@ -49,7 +49,7 @@ a{
     text-decoration: none;
 }
 
-*{
+body {
     font-family: 'Palatino', serif;
     /* font-family: andale mono, monospace; */
 }
