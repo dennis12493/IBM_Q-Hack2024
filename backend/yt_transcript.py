@@ -20,31 +20,52 @@ for item in data:
     text = re.sub(r'[^\w\s]', '', text.lower())
     tokens = word_tokenize(text)
     stop_words = set(stopwords.words('english'))
-    additional_stopwords = set(['uh', 'um', 'im', 'em', 'oh', 'uhh', 'umm', 'uhm', 'ah', 'hmm', 'huh', 'yeah', 'ok', 'okay', 'like', 'well', 'really', 'just', 'also', 'yeah', 'right', 'gonna'])
+    additional_stopwords = set(['uh', 'um', 'im', 'em',
+                                'oh', 'uhh', 'umm', 'uhm',
+                                'ah', 'hmm', 'huh', 'yeah',
+                                'ok', 'okay', 'like', 'well',
+                                'really', 'just', 'also', 'yeah',
+                                'right', 'gonna'])
     stop_words.update(additional_stopwords)
     filtered_tokens = [word for word in tokens if word not in stop_words]
     coherent_text = ' '.join(filtered_tokens)
     item['text'] = coherent_text
+
+# Add introductory text
+intro_text = "Please take a look at the following data:"
+
+# Prompt 1: Introduction
+prompt1 = intro_text
+
+# Prompt 2: Data
+prompt2 = " ".join(item['text'] for item in data)
+
+# Prompt 3: Extract text containing "Martin Luther"
+prompt3 = "Extract timestamp and text that includes \"Martin Luther\""
+
+# Define all prompts in a dictionary
+prompts = {
+    "prompt1": prompt1,
+    "prompt2": prompt2,
+    "prompt3": prompt3
+}
+
 # Set your OpenAI API key
-openai.api_key = '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'
+openai.api_key = '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'
 
-# Extract text and timestamps from data
-openai_input = [{'text': item['text'], 'start': item['start']} for item in data]
+# Run a loop over the prompts and print responses
+for prompt_key, prompt_value in prompts.items():
+    print(f"Prompt: {prompt_key}")
+    print(f"{prompt_value}\n")
 
-# Define your prompt
-prompt = "Please take a look at the following data:"
+    # Call the OpenAI API with the prompt
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": prompt_value}
+        ]
+    )
 
-# Call the OpenAI API with the structured data
-response = openai.Completion.create(
-    engine="davinci-002",
-    prompt=prompt,
-    examples_context=openai_input,
-    max_tokens=100
-)
-
-# Retrieve and print the response
-for choice in response.choices:
-    print(choice.text.strip())
 """
 # Define the file path
 output_file_path = "transcript-" + videoId + ".json"  # You can change the file name and extension as needed
