@@ -14,15 +14,17 @@ async function fetchTranscript(videoId: string) {
     return await YoutubeTranscript.fetchTranscript(videoId);
 }
 
-async function askOpenAI(question: string, systemPrompt: string,  oldUserMessages: UserMessage[]) {
+async function askOpenAI(question: string, systemPrompt: string,  oldUserMessages: UserMessage[], transcript: string) {
     let oldMessages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [];
+    oldMessages.push({ role: "system", content: systemPrompt });
+    oldMessages.push({ role: "user", content: "Here is the transcript of the video on which the user refers: " + transcript });
+    oldMessages.push({ role: "user", content: "These are old messages with the user:" });
     oldUserMessages.forEach((oldUserMessage) => {
         oldUserMessage.sender === "me" ? oldMessages.push({ role: "user", content: oldUserMessage.message }) : oldMessages.push({ role: "assistant", content: oldUserMessage.message });
     });
 
     let messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
-        { role: "system", content: systemPrompt},
-        { role: "user", content: question },
+        { role: "user", content: "Here is the new question the user asked: " + question },
     ];
     messages = oldMessages.concat(messages);
     console.log("Asking OpenAI with following messages:", messages);
@@ -38,19 +40,16 @@ async function askOpenAI(question: string, systemPrompt: string,  oldUserMessage
     return answerChoice.message.content ?? "Sorry, currently I can't help you.";
 }
 
-function getVideoSystemPrompt(videoId: string) {
-    let transcript = JSON.stringify(transcripts[videoId]);
+function getVideoSystemPrompt() {
     let systemPrompt =
-        transcript +
-        "\n" +
-        "You are a helpful assistant, which answers the question with information from the upper " +
-        'transcript. You provide an explanation to the question and also an beginning timestamp, where the explanation can be found in the video of the transcript. The answer is in the format "TIMESTAMP:EXPLANATION".';
+        "You are a helpful assistant, which answers the question with information from provided " +
+        'transcript. You provide an explanation to the new question and also an single integer timestamp, where the explanation can be found in the video of the transcript. The answer is always in the format "TIMESTAMP:EXPLANATION".';
     return systemPrompt;
 }
 
 export async function askAboutVideo(videoId: string, question: string, oldUserMessages: UserMessage[]) {
-    let systemPrompt = getVideoSystemPrompt(videoId);
-    let answer = await askOpenAI(question, systemPrompt, oldUserMessages);
+    let systemPrompt = getVideoSystemPrompt();
+    let answer = await askOpenAI(question, systemPrompt, oldUserMessages, JSON.stringify(transcripts[videoId]));
     let message = answer.split(":");
     return { timestamp: parseInt(message[0]), answer: message[1] };
 }

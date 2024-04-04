@@ -44,6 +44,7 @@
             userInput = "";
             const oldMessages  = Object.assign([], messages);
             oldMessages.splice(0, 1);
+            oldMessages.splice(oldMessages.length - 1, 1);
             askAboutVideo(url, message.message, oldMessages)
                 .then((value) => {
                     timestamp.set(value.timestamp);
