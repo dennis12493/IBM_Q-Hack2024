@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "autosize": "^6.0.1",
+    "axios": "^1.6.8",
     "openai": "^4.32.1",
     "svelte-file-dropzone": "^2.0.4",
     "svelte-routing": "^2.12.0",

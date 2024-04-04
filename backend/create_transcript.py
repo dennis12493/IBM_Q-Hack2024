@@ -9,9 +9,6 @@ import json
 nltk.download('punkt')
 nltk.download('stopwords')
 
-video_ids=["v6tUWk7vC6g", "uipjCTg_PqQ", "J3euEMWC8tg"]
-output_file_path = "../frontend/src/lib/assets/transcripts.json"
-
 def get_sanized_transscript(video_id):
     print("Getting transcript for video_id \"" + video_id + "\".")
     data = YouTubeTranscriptApi.get_transcript(video_id)
@@ -30,10 +27,14 @@ def get_sanized_transscript(video_id):
 
     return data
 
-data = {}
-for video_id in video_ids:
-    data[video_id] = get_sanized_transscript(video_id)
 
-with open(output_file_path, 'w') as file:
-    json.dump(data, file, indent=4)
-print("Transcripts saved to \"" + output_file_path + "\".")
+# video_ids=["v6tUWk7vC6g", "uipjCTg_PqQ", "J3euEMWC8tg"]
+# output_file_path = "../frontend/src/lib/assets/transcripts.json"
+
+# data = {}
+# for video_id in video_ids:
+#     data[video_id] = get_sanized_transscript(video_id)
+
+# with open(output_file_path, 'w') as file:
+#     json.dump(data, file, indent=4)
+# print("Transcripts saved to \"" + output_file_path + "\".")
