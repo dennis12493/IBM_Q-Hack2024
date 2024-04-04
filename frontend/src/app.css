@@ -40,6 +40,10 @@ p{
     font-family: 'Verdana', sans-serif;
 }
 
+div input {
+    font-family: 'Verdana', sans-serif;
+}
+
 a{
     color: var(--border);
     text-decoration: none;

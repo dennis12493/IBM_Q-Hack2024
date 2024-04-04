@@ -6,6 +6,7 @@
 
     let url: string = "";
     let userInput: string = "";
+    let isInputDisabled: boolean = false;
     $: $selectedVideo, handleVideoChange();
 
     function handleVideoChange() {
@@ -33,6 +34,7 @@
 
     function sendMessage(event: Event){
         event.preventDefault();
+        isInputDisabled = true;
         const message: Message = {
             sender: "me",
             message: userInput.trim(),
@@ -50,6 +52,9 @@
                     message: value.answer
                 }
                 messages = [ ...messages, answerMessage ]
+                isInputDisabled = false;
+            }).catch(() => {
+                isInputDisabled = false;
             })
         }
     }
@@ -64,6 +69,7 @@
     <div class="input-container">
         <form on:submit={sendMessage}>
             <input
+                disabled={isInputDisabled}
                 bind:value={userInput}
                 class="form-control"
                 id="message-input"

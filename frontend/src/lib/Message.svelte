@@ -7,7 +7,9 @@
 <div class="message-container">
     <div class="message">
         {#if sender == "me"}
-        <img src={IconUser} alt=""/>
+        <div class="icon">
+            <img src={IconUser} alt=""/>
+        </div>
         {/if}
 
         <div class="message-text">
@@ -15,7 +17,9 @@
         </div>
 
         {#if sender == "other"}
-        <img src={IconUser} alt=""/>
+        <div class="icon">
+            <img src={IconUser} alt=""/>
+        </div>
         {/if}
     </div>
     <div class="line"></div>
@@ -45,7 +49,7 @@
     }
 
     .line {
-        background-color: var(--background);
+        background-color: var(--border);
         width: 95%;
         height: 3px;
         margin-bottom: 0.5rem;
@@ -55,9 +59,36 @@
         width: 1.7rem;
         height: 1.7rem;
 
-        background-color: var(--border);
         filter: invert(0.9);
         padding: 0.6rem;
         border-radius: 100%;
+    }
+
+    .icon {
+        width: 1.7rem;
+        height: 1.7rem;
+        padding: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 100%;
+        background-color: var(--background);
+    }
+
+    @keyframes fade-out {
+        0% {
+            background-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+
+        }
+        50% {
+            background-color: transparent;
+            box-shadow: 0 0 30px transparent;
+        }
+        100% {
+            background-color: var(--background);
+            box-shadow: 0 0 30px transparent;
+        }
     }
 </style>
