@@ -8,7 +8,7 @@
     <div class="lectures">
         <VideoButton date="21.03.2024" value={0} title={'Bees'}></VideoButton>
         <VideoButton date="24.03.2024" value={1} title={'Trees'}></VideoButton>
-        <VideoButton date="01.04.2024" value={2} title={'Wölfe'}></VideoButton>
+        <VideoButton date="01.04.2024" value={2} title={'Wolves'}></VideoButton>
     </div>
 </div>
 

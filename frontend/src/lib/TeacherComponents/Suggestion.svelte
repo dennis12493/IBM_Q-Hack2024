@@ -11,8 +11,9 @@
     .message{
         border-bottom: 2px solid var(--border);
         padding: 0.3rem 1rem;
-        animation: fade 0.7s ease-in;
         margin-bottom: 0.5rem;
+        opacity: 0;
+        animation: fade 0.7s 0.5s ease-in forwards;
     }
 
     p{
