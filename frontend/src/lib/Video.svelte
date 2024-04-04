@@ -44,6 +44,7 @@
         display: flex;
         align-items: start;
         padding-top: 1rem;
+        margin-bottom: 2rem;
         height: calc(100% - 5rem);
     }
     .responsive-iframe {
