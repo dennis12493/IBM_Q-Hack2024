@@ -2,10 +2,10 @@
     import {selectedVideo, urls, timestamp} from "../general/stores";
     import { onMount } from "svelte";
     import { askAboutVideo } from '../services/video-helper';
-    import IconUser from "./assets/User.svg";
-    import IconSend from "./assets/Send.svg";
+    import Message from "./Message.svelte";
 
     let url: string = "";
+    let userInput: string = "";
     $: $selectedVideo, handleVideoChange();
 
     function handleVideoChange() {
@@ -26,21 +26,23 @@
         messages = [
             {
                 sender: "other",
-                message: "Do you have some questions about the video?",
+                message: "I'm happy to assist you. Feel free to ask any Question you want!",
             },
         ];
     }
 
-    function sendMessage() {
-        const input = document.getElementById("message-input") as HTMLInputElement;
+    function sendMessage(event: Event){
+        event.preventDefault();
         const message: Message = {
             sender: "me",
-            message: input.value.trim(),
+            message: userInput.trim(),
         };
 
         if (message && message.message !== "") {
             messages = [...messages, message];
-            input.value = "";
+            console.log(message.message);
+            userInput = "";
+            console.log(message.message);
             askAboutVideo(url, message.message).then((value ) => {
                 timestamp.set(value.timestamp);
                 let answerMessage: Message =  {
@@ -56,51 +58,38 @@
 <div class="chat-container">
     <div class="messages">
         {#each messages as message}
-        <div class="card">
-            {#if message.sender == "me"}
-            <img src={IconUser} alt=""/>
-            {/if}
-            <div class="card-body">
-                {message.message}
-            </div>
-            {#if message.sender == "other"}
-            <img src={IconUser} alt=""/>
-            {/if}
-        </div>
+            <Message sender={message.sender} message={message.message} />
         {/each}
     </div>
     <div class="input-container">
-        <textarea
-            class="form-control"
-            id="message-input"
-            data-bs-toggle="autosize"
-            placeholder="Type something…"
-        ></textarea>
-        <button on:click={sendMessage}><img src={IconSend} alt=""/></button>
+        <form on:submit={sendMessage}>
+            <input
+                bind:value={userInput}
+                class="form-control"
+                id="message-input"
+                placeholder="Ask me anything..."
+                type="text"
+            >
+        </form>
     </div>
 </div>
+<!-- <button on:click={sendMessage}><img src={IconSend} alt=""/></button> -->
 
 <style>
-    .card {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-    }
-
     .messages{
         padding-top: 2rem;
-        height: calc(100% - 8rem);
-        max-height: calc(100% - 12rem);
+        height: 100%;
+        max-height: 100%;
         overflow-y: scroll;
+        background-color: var(--panel);
     }
 
     .chat-container {
-        margin: 0;
+        margin: 1rem 0.5rem;
         border-radius: 5px;
-        height: calc(100%);
-        background-color: var(--panel);
+        height: 85%;
+
+        background-color: red;
     }
 
     .card-body {
@@ -120,15 +109,20 @@
         justify-content: center;
 
         width: 38%;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
 
-    textarea {
-        width: 80%;
-        border-radius: 10px;
-        background-color: --var(--highlight);
-        border: 2px solid #ccc;
-        color: --var(--text);
+    form{
+        width: 100%;
+    }
+
+    input {
+        width: 100%;
+        max-width: calc(100% - 0.6rem);
+        padding: 1rem 0.3rem;
+
+        outline: none;
+        border: none;
     }
 
     img {

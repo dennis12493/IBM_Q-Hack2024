@@ -7,7 +7,7 @@
 
 <div class="main">
     <Header />
-    <div class="top-level">
+    <div class="top">
         <div class="nav">
             <Navigation />
         </div>
@@ -28,12 +28,13 @@
         width: 100%;
     }
 
-    .top-level {
+    .top {
         background-color: var(--background);
         display: flex;
         flex-direction: row;
         gap: 1rem;
         height: 100%;
+        overflow-y: hidden;
     }
 
     .nav {
@@ -44,5 +45,6 @@
     }
     .chat {
         width: 40%;
+        max-height: calc(100% - 3rem);
     }
 </style>
